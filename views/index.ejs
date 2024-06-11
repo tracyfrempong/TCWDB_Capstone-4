@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Requests</title>
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      async function fetchBook() {
+        const title = document.getElementById("title").value;
+        const response = await fetch(`/get-book?title=${title}`);
+        const html = await response.text();
+        document.getElementById("book-details").innerHTML = html;
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <form action="/get-book" method="get">
+        <label for="title">Enter Title:</label>
+        <input type="text" id="title" name="title" required />
+        <input id="get" type="submit" value="GET BOOK" />
+      </form>
+
+      <!-- Book Data -->
+
+      <% if (locals.book) { %>
+      <h1>Book Details</h1>
+      <p><strong>Title:</strong> <%= book.title %></p>
+      <p><strong>Author:</strong> <%= book.author_name %></p>
+      <p><strong>First Published:</strong> <%= book.first_publish_year %></p>
+      <% if (book.cover_i) { %>
+      <p><strong>Cover:</strong></p>
+      <img
+        src="https://covers.openlibrary.org/b/id/<%= book.cover_i %>-L.jpg"
+        alt="Book Cover"
+      />
+      <% } else { %>
+      <p>No cover image available.</p>
+      <% } %> <% } else { %>
+      <p>No book found.</p>
+      <% } %>
+    </div>
+  </body>
+</html>
