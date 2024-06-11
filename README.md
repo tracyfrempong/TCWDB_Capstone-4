@@ -69,7 +69,13 @@ This project uses the [Open Library Search API](https://openlibrary.org/dev/docs
 ## Usage
 
 1. Enter a book title in the search form and click "GET BOOK".
-2. The application will display the book details including title, author, publication year, and cover image if available.
+    Example of titles to search:
+   i. the lord of the rings
+   ii. pride and prejudice
+   iii. 1984
+   iv. to kill a mockingbird
+   v. moby dick
+3. The application will display the book details including title, author, publication year, and cover image if available.
 
 ## Acknowledgments
 
